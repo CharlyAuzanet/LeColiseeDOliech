@@ -13,9 +13,11 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $joueurs = $em->getRepository('MainBundle:Joueurs')->findAll();
+        $user = $this->getUser();
 
         return $this->render('MainBundle:Default:index.html.twig', array(
-            'joueurs'=>$joueurs
+            'joueurs'=>$joueurs,
+            'user'=>$user
         ));
     }
 

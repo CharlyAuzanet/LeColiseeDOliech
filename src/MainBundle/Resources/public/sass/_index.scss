@@ -34,7 +34,34 @@ body {
   margin-top: 15px;
   background-color : $redArma;
   color : white;
-  box-shadow: 0px 5px 5px 0px black;
+  box-shadow: 0px 2px 2px 0px black;
+
+}
+.btnVote:hover {
+  margin-top: 15px;
+  background-color : $redArma;
+  color : white;
+  box-shadow: 0px 6px 6px 0px black;
+}
+.btnVote:focus {
+  margin-top: 15px;
+  background-color : $redArma;
+  color : white;
+  box-shadow: 0px 6px 6px 0px black;
+}
+
+.btnVoteDisabled {
+  margin-top: 15px;
+  background-color: darkgrey;
+  color: grey;
+}
+.btnVoteDisabled:hover {
+  background-color: grey;
+  color: white;
+}
+.btnVoteDisabled:focus {
+  background-color: darkgrey;
+  color: grey;
 }
 .nbVote {
   margin-top: 25px;

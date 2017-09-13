@@ -30,9 +30,19 @@
                     <div class="col s5 offset-s1 center ">
                         <p class="nbVote">Vote : {{ joueur.voix }}</p>
                     </div>
+                    {% if app.user and user.joueur is null %}
                     <div class="col s5 center divVote ">
                         <a href="{{ path('vote', { 'id' : joueur.id }) }}"> <button class="btn btnVote">Je vote</button></a>
                     </div>
+                    {% elseif app.user and user.joueur is defined %}
+                        <div class="col s5 center divVote ">
+                            <button class="tooltipped btn btnVoteDisabled" data-position="bottom" data-delay="50" data-tooltip="Tu as déjà voté pour {{ user.joueur.pseudo }} , tu ne peux plus voter !" >Je vote</button>
+                        </div>
+                    {% else %}
+                    <div class="col s5 center divVote ">
+                        <button class="tooltipped btn btnVoteDisabled" data-position="bottom" data-delay="50" data-tooltip="Connect toi ou inscrit toi en 1 minute pour voter !" >Je vote</button>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}

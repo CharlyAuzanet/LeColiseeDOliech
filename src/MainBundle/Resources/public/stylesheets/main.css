@@ -44,10 +44,45 @@ body {
   margin-top: 15px;
   background-color: #881814;
   color: white;
-  box-shadow: 0px 5px 5px 0px black;
+  box-shadow: 0px 2px 2px 0px black;
 }
 
-/* line 39, ../sass/_index.scss */
+/* line 40, ../sass/_index.scss */
+.btnVote:hover {
+  margin-top: 15px;
+  background-color: #881814;
+  color: white;
+  box-shadow: 0px 6px 6px 0px black;
+}
+
+/* line 46, ../sass/_index.scss */
+.btnVote:focus {
+  margin-top: 15px;
+  background-color: #881814;
+  color: white;
+  box-shadow: 0px 6px 6px 0px black;
+}
+
+/* line 53, ../sass/_index.scss */
+.btnVoteDisabled {
+  margin-top: 15px;
+  background-color: darkgrey;
+  color: grey;
+}
+
+/* line 58, ../sass/_index.scss */
+.btnVoteDisabled:hover {
+  background-color: grey;
+  color: white;
+}
+
+/* line 62, ../sass/_index.scss */
+.btnVoteDisabled:focus {
+  background-color: darkgrey;
+  color: grey;
+}
+
+/* line 66, ../sass/_index.scss */
 .nbVote {
   margin-top: 25px;
 }
