@@ -9,3 +9,8 @@ MainBundle\Entity\User:
             generator:
                 strategy: AUTO
     lifecycleCallbacks: {  }
+
+    manyToOne:
+        joueur:
+          targetEntity: MainBundle\Entity\Joueurs
+          cascade: ['all']

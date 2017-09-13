@@ -16,4 +16,8 @@ MainBundle\Entity\Joueurs:
         voix:
             type: integer
             column: Voix
+        photo:
+            type: string
+            length: 255
+            column: Photo
     lifecycleCallbacks: {  }

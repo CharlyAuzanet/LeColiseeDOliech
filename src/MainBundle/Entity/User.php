@@ -23,5 +23,33 @@ class User extends BaseUSer
     {
         return $this->id;
     }
-}
+    /**
+     * @var \MainBundle\Entity\Joueurs
+     */
+    private $joueur;
 
+
+    /**
+     * Set joueur
+     *
+     * @param \MainBundle\Entity\Joueurs $joueur
+     *
+     * @return User
+     */
+    public function setJoueur(\MainBundle\Entity\Joueurs $joueur = null)
+    {
+        $this->joueur = $joueur;
+
+        return $this;
+    }
+
+    /**
+     * Get joueur
+     *
+     * @return \MainBundle\Entity\Joueurs
+     */
+    public function getJoueur()
+    {
+        return $this->joueur;
+    }
+}

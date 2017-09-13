@@ -18,24 +18,24 @@
             <h2 class="center">Qui <span class="titleRed">soutenez</span> vous ?</h2>
         </div>
         <div>
-            {% for i in 0..7 %}
+            {% for joueur in joueurs %}
             <div class="col s3">
                 <div class="row">
                     <div class="center">
-                        <p><span class="titleRed">ODE</span>MIAN</p>
+                        <p>{{ joueur.pseudo }}</p>
                     </div>
                     <div class="center">
-                        <img class="z-depth-5" src="{{ asset('bundles/main/images/odemian.jpg') }}" alt="odémiam">
+                        <img class="z-depth-5 responsive-img" src="{{ asset('bundles/main/images/' ~ joueur.photo) }}" alt="odémiam">
                     </div>
                     <div class="col s5 offset-s1 center ">
-                        <p class="nbVote" ">Vote : 548</p>
+                        <p class="nbVote">Vote : {{ joueur.voix }}</p>
                     </div>
                     <div class="col s5 center divVote ">
-                        <button class="btn btnVote">Je vote</button>
+                        <a href="{{ path('vote', { 'id' : joueur.id }) }}"> <button class="btn btnVote">Je vote</button></a>
                     </div>
                 </div>
             </div>
-                {% endfor %}
+            {% endfor %}
         </div>
         
     </div>
