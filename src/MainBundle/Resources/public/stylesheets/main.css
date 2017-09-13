@@ -1,0 +1,53 @@
+/* line 3, ../sass/_index.scss */
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0 auto;
+  padding: 0 auto;
+  width: 100%;
+}
+
+/* line 10, ../sass/_index.scss */
+.title {
+  text-align: center;
+}
+/* line 12, ../sass/_index.scss */
+.title h1 {
+  font-size: 6em;
+  margin-top: 70px;
+}
+
+/* line 17, ../sass/_index.scss */
+.titleRed {
+  color: #881814;
+}
+
+/* line 20, ../sass/_index.scss */
+.btnConnexion {
+  margin-top: 70px;
+}
+/* line 22, ../sass/_index.scss */
+.btnConnexion .btn {
+  padding-top: 10px;
+  padding-bottom: 45px;
+  background-color: #881814;
+  color: white;
+  box-shadow: 0px 5px 5px 0px black;
+}
+
+/* line 30, ../sass/_index.scss */
+.header {
+  border-bottom: solid black 3px;
+}
+
+/* line 33, ../sass/_index.scss */
+.btnVote {
+  margin-top: 15px;
+  background-color: #881814;
+  color: white;
+  box-shadow: 0px 5px 5px 0px black;
+}
+
+/* line 39, ../sass/_index.scss */
+.nbVote {
+  margin-top: 25px;
+}

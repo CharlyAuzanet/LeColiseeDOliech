@@ -1,0 +1,19 @@
+MainBundle\Entity\Joueurs:
+    type: entity
+    table: null
+    repositoryClass: MainBundle\Repository\JoueursRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        pseudo:
+            type: string
+            length: 255
+            column: Pseudo
+        voix:
+            type: integer
+            column: Voix
+    lifecycleCallbacks: {  }
