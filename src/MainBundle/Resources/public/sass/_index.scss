@@ -1,4 +1,4 @@
-$redArma : #881814;
+@import "global";
 
 body {
   font-family: 'Open Sans', sans-serif;
@@ -65,4 +65,7 @@ body {
 }
 .nbVote {
   margin-top: 25px;
+}
+.lesVotes {
+  margin-top: 80px;
 }

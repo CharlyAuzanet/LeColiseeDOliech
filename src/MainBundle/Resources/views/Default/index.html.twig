@@ -14,9 +14,25 @@
         </div>
     </div>
     <div class="row">
+        {% if app.user is empty or user.joueur is null %}
         <div class="col s12">
             <h2 class="center">Qui <span class="titleRed">soutenez</span> vous ?</h2>
         </div>
+        {% else %}
+            <div class="col s12">
+                <div class="row">
+                    <div class="col s12">
+                        <h2 class="center">Vous <span class="titleRed">soutenez</span> {{ user.joueur.pseudo }} !</h2>
+                    </div>
+                    <div class="col s4 offset-s4 center">
+                        <img class="z-depth-5 responsive-img center" src="{{ asset('bundles/main/images/' ~ user.joueur.photo) }}" alt="{{ user.joueur.pseudo }}">
+                    </div>
+                    <div class="col s12 lesVotes">
+                        <h3 class="center">LES <span class="titleRed" >VOTES</span> :</h3>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
         <div>
             {% for joueur in joueurs %}
             <div class="col s3">
@@ -25,7 +41,7 @@
                         <p>{{ joueur.pseudo }}</p>
                     </div>
                     <div class="center">
-                        <img class="z-depth-5 responsive-img" src="{{ asset('bundles/main/images/' ~ joueur.photo) }}" alt="odémiam">
+                        <img class="z-depth-5 responsive-img" src="{{ asset('bundles/main/images/' ~ joueur.photo) }}" alt="{{ joueur.pseudo }}">
                     </div>
                     <div class="col s5 offset-s1 center ">
                         <p class="nbVote">Vote : {{ joueur.voix }}</p>

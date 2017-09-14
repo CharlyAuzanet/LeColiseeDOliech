@@ -2,9 +2,9 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>{% block title %}My Holly{% endblock %}</title>
+    <title>{% block title %}Le Colisée D'Oliech / ArmaTeam{% endblock %}</title>
     {% block stylesheets %}{% endblock %}
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('bundles/main/images/faviconArma.png') }}" />
     <!-- Icone Materialize -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified CSS -->
@@ -17,6 +17,8 @@
 <body>
 {% block nav %}{% endblock %}
 {% block body %}
+{% endblock %}
+{% block fos_user_content %}
 {% endblock %}
 {% block footer %}{% endblock %}
 {% block javascripts %}
