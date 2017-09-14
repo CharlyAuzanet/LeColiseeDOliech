@@ -8,21 +8,7 @@ use FOS\UserBundle\Model\User as BaseUser;
  */
 class User extends BaseUSer
 {
-    /**
-     * @var int
-     */
-    protected $id;
-
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+   
     /**
      * @var \MainBundle\Entity\Joueurs
      */

@@ -14,7 +14,8 @@ class UserType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('joueur', EntityType::class, array(
+        $builder
+            ->add('joueur', EntityType::class, array(
             'class'=>'MainBundle\Entity\Joueurs'
         ));
     }

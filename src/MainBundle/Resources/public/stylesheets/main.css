@@ -1,3 +1,61 @@
+/*1. LOGIN */
+/* line 5, ../sass/_login.scss */
+#login .btn {
+  background-color: #881814;
+  color: white;
+  box-shadow: 0px 5px 5px 0px black;
+}
+/* line 10, ../sass/_login.scss */
+#login .btnConnect {
+  margin-top: 10px;
+}
+/* line 13, ../sass/_login.scss */
+#login input:focus {
+  border-bottom: 1px solid #881814;
+  -webkit-box-shadow: 0 1px 0 0 #881814;
+  box-shadow: 0 1px 0 0 #881814;
+}
+/* line 20, ../sass/_login.scss */
+#login input[type="checkbox"] + label:before {
+  border: 2px solid black;
+  background: transparent;
+}
+/* line 24, ../sass/_login.scss */
+#login input[type="checkbox"]:checked + label:before {
+  border: 2px solid transparent;
+  border-bottom: 2px solid #881814;
+  border-right: 2px solid #881814;
+  background: transparent;
+}
+/* line 30, ../sass/_login.scss */
+#login input.filled-in[type="checkbox"] + label:after {
+  border: 2px solid #881814;
+  background: transparent;
+}
+/* line 34, ../sass/_login.scss */
+#login input.filled-in[type="checkbox"]:checked + label:after {
+  background: #881814;
+}
+/* line 37, ../sass/_login.scss */
+#login .errorMsg {
+  margin-top: 5px;
+}
+
+/*2. REGISTER */
+/* line 5, ../sass/_register.scss */
+#register .btn {
+  background-color: #881814;
+  color: white;
+  box-shadow: 0px 5px 5px 0px black;
+}
+/* line 10, ../sass/_register.scss */
+#register input:focus {
+  border-bottom: 1px solid #881814;
+  -webkit-box-shadow: 0 1px 0 0 #881814;
+  box-shadow: 0 1px 0 0 #881814;
+}
+
+/*3. INDEX*/
 /* line 3, ../sass/_index.scss */
 body {
   font-family: 'Open Sans', sans-serif;
@@ -90,46 +148,4 @@ body {
 /* line 69, ../sass/_index.scss */
 .lesVotes {
   margin-top: 80px;
-}
-
-/* line 5, ../sass/_login.scss */
-#login .btn {
-  background-color: #881814;
-  color: white;
-  box-shadow: 0px 5px 5px 0px black;
-}
-/* line 10, ../sass/_login.scss */
-#login .btnConnect {
-  margin-top: 10px;
-}
-/* line 13, ../sass/_login.scss */
-#login input:focus {
-  border-bottom: 1px solid #881814;
-  -webkit-box-shadow: 0 1px 0 0 #881814;
-  box-shadow: 0 1px 0 0 #881814;
-}
-/* line 20, ../sass/_login.scss */
-#login input[type="checkbox"] + label:before {
-  border: 2px solid black;
-  background: transparent;
-}
-/* line 24, ../sass/_login.scss */
-#login input[type="checkbox"]:checked + label:before {
-  border: 2px solid transparent;
-  border-bottom: 2px solid #881814;
-  border-right: 2px solid #881814;
-  background: transparent;
-}
-/* line 30, ../sass/_login.scss */
-#login input.filled-in[type="checkbox"] + label:after {
-  border: 2px solid #881814;
-  background: transparent;
-}
-/* line 34, ../sass/_login.scss */
-#login input.filled-in[type="checkbox"]:checked + label:after {
-  background: #881814;
-}
-/* line 37, ../sass/_login.scss */
-#login .errorMsg {
-  margin-top: 5px;
 }
