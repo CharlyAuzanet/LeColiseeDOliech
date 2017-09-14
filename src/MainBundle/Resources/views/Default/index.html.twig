@@ -7,13 +7,21 @@
         <div class="col s8 title">
             <h1>LE <span class="titleRed">COLISÉE</span> D'<span class="titleRed">OLIECH</span></h1>
         </div>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <div class="col s2 btnConnexion">
+            <a href="{{ path('fos_user_security_logout') }}">
+                <button class="btn">Deconnexion</button>
+            </a>
+        </div>
+    {% else %}
         <div class="col s2 btnConnexion">
             <a href="{{ path('fos_user_security_login') }}">
                 <button class="btn">Connexion</button>
             </a>
         </div>
+    {% endif %}
     </div>
-    <div class="row">
+    <div class="row voteBox">
         {% if app.user is empty or user.joueur is null %}
         <div class="col s12">
             <h2 class="center">Qui <span class="titleRed">soutenez</span> vous ?</h2>
@@ -63,7 +71,50 @@
             </div>
             {% endfor %}
         </div>
-        
     </div>
-
+    <div class="row bracket">
+        <div class="col s12 center">
+            <h2>Bra<span class="titleRed">cket</span> :</h2>
+        </div>
+        <div class="row">
+            <div class="col s2 offset-s1 bracketBox">
+                <p class="center">Player 1</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s2 offset-s1 bracketBox">
+                <p class="center">Player 2</p>
+            </div>
+            <div class="col s2 offset-s1 bracketBoxDemi">
+                <p class="center">Demi 1</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s2 offset-s7 bracketBox">
+                <p class="center">Finaliste</p>
+            </div>
+            <div class="col s1 center">
+                <p>VS</p>
+            </div>
+            <div class="col s2 bracketBox">
+                <p class="center">Oliech</p>
+            </div>
+        </div>
+       <div class="row">
+               <div class="col s2 offset-s1 bracketBox">
+                   <p class="center">Player 3</p>
+               </div>
+       </div>
+        <div class="row">
+            <div class="col s2 offset-s1 bracketBox">
+                <p class="center">Player 4</p>
+            </div>
+            <div class="col s2 offset-s1 bracketBoxDemi">
+                <p class="center">Demi 2</p>
+            </div>
+        </div>
+    </div>
+    <div class="row footer">
+        <p class="center">© Hushy pour ArmaTeam </p>
+    </div>
 {% endblock %}

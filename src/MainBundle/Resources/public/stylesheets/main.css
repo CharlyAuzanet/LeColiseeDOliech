@@ -81,7 +81,7 @@ body {
 
 /* line 20, ../sass/_index.scss */
 .btnConnexion {
-  margin-top: 70px;
+  margin-top: 92px;
 }
 /* line 22, ../sass/_index.scss */
 .btnConnexion .btn {
@@ -148,4 +148,31 @@ body {
 /* line 69, ../sass/_index.scss */
 .lesVotes {
   margin-top: 80px;
+}
+
+/* line 73, ../sass/_index.scss */
+.voteBox {
+  border-bottom: solid black 3px;
+}
+
+/* line 77, ../sass/_index.scss */
+.bracketBox {
+  border: solid black 3px;
+}
+
+/* line 80, ../sass/_index.scss */
+.bracketBoxDemi {
+  border: solid black 3px;
+  margin-top: -40px;
+}
+
+/* line 84, ../sass/_index.scss */
+.footer {
+  margin: 0;
+  background-color: #881814;
+}
+/* line 87, ../sass/_index.scss */
+.footer p {
+  color: white;
+  padding-top: 8px;
 }

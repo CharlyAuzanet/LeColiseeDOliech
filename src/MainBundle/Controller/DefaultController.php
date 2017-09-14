@@ -40,7 +40,9 @@ class DefaultController extends Controller
         $em->persist($User, $joueurs);
         $em->flush();
 
-        return $this->render('@Main/Default/redirect.html.twig');
+        return $this->render('@Main/Default/redirect.html.twig', array(
+            'joueur' => $joueurs
+        ));
     }
 
 }
