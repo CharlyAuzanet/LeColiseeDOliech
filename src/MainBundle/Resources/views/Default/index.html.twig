@@ -1,120 +1,149 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
 
-    <div class="row header">
-        <div class="col s2"><img class="responsive-img" src="{{ asset('bundles/main/images/armaLogo.png') }}" alt="ArmaLogo"></div>
-        <div class="col s8 title">
-            <h1>LE <span class="titleRed">COLISÉE</span> D'<span class="titleRed">OLIECH</span></h1>
-        </div>
-    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        <div class="col s2 btnConnexion">
-            <a href="{{ path('fos_user_security_logout') }}">
-                <button class="btn">Deconnexion</button>
-            </a>
-        </div>
-    {% else %}
-        <div class="col s2 btnConnexion">
-            <a href="{{ path('fos_user_security_login') }}">
-                <button class="btn">Connexion</button>
-            </a>
-        </div>
-    {% endif %}
-    </div>
-    <div class="row voteBox">
-        {% if app.user is empty or user.joueur is null %}
-        <div class="col s12">
-            <h2 class="center">Qui <span class="titleRed">soutenez</span> vous ?</h2>
-        </div>
-        {% else %}
-            <div class="col s12">
-                <div class="row">
-                    <div class="col s12">
-                        <h2 class="center">Vous <span class="titleRed">soutenez</span> {{ user.joueur.pseudo }} !</h2>
-                    </div>
-                    <div class="col s4 offset-s4 center">
-                        <img class="z-depth-5 responsive-img center" src="{{ asset('bundles/main/images/' ~ user.joueur.photo) }}" alt="{{ user.joueur.pseudo }}">
-                    </div>
-                    <div class="col s12 lesVotes">
-                        <h3 class="center">LES <span class="titleRed" >VOTES</span> :</h3>
-                    </div>
-                </div>
+{% block first %}
+    <img class="first" src="https://wallpaperscraft.com/image/hearthstone_heroes_of_warcraft_box_sword_smoke_pattern_95366_1920x1080.jpg" alt="azd">
+
+{% endblock %}
+{% block body %}
+    <div class="lebody">
+
+        <div class="row header">
+            <div class="col s2"><img class="responsive-img" src="{{ asset('bundles/main/images/armaLogo.png') }}" alt="ArmaLogo"></div>
+            <div class="col s8 title">
+                <h1>LE <span class="titleRed">COLISÉE</span> D'<span class="titleRed">OLIECH</span></h1>
             </div>
-        {% endif %}
-        <div>
-            {% for joueur in joueurs %}
-            <div class="col s3">
-                <div class="row">
-                    <div class="center">
-                        <p>{{ joueur.pseudo }}</p>
-                    </div>
-                    <div class="center">
-                        <img class="z-depth-5 responsive-img" src="{{ asset('bundles/main/images/' ~ joueur.photo) }}" alt="{{ joueur.pseudo }}">
-                    </div>
-                    <div class="col s5 offset-s1 center ">
-                        <p class="nbVote">Vote : {{ joueur.voix }}</p>
-                    </div>
-                    {% if app.user and user.joueur is null %}
-                    <div class="col s5 center divVote ">
-                        <a href="{{ path('vote', { 'id' : joueur.id }) }}"> <button class="btn btnVote">Je vote</button></a>
-                    </div>
-                    {% elseif app.user and user.joueur is defined %}
-                        <div class="col s5 center divVote ">
-                            <button class="tooltipped btn btnVoteDisabled" data-position="bottom" data-delay="50" data-tooltip="Tu as déjà voté pour {{ user.joueur.pseudo }} , tu ne peux plus voter !" >Je vote</button>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <div class="col s2 btnConnexion">
+                    <a href="{{ path('fos_user_security_logout') }}">
+                        <button class="btn">Deconnexion</button>
+                    </a>
+                </div>
+            {% else %}
+                <div class="col s2 btnConnexion">
+                    <a href="{{ path('fos_user_security_login') }}">
+                        <button class="btn">Connexion</button>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+        <div class="row voteBox">
+            {% if app.user is empty or user.joueur is null %}
+                <div class="col s12">
+                    <h2 class="center">Qui <span class="titleRed">soutenez</span> vous ?</h2>
+                </div>
+            {% else %}
+                <div class="col s12">
+                    <div class="row">
+                        <div class="col s12">
+                            <h2 class="center">Vous <span class="titleRed">soutenez</span> {{ user.joueur.pseudo }} !</h2>
                         </div>
-                    {% else %}
-                    <div class="col s5 center divVote ">
-                        <button class="tooltipped btn btnVoteDisabled" data-position="bottom" data-delay="50" data-tooltip="Connect toi ou inscrit toi en 1 minute pour voter !" >Je vote</button>
+                        <div class="col s4 offset-s4 center">
+                            <img class="z-depth-5 responsive-img center" src="{{ asset('bundles/main/images/' ~ user.joueur.photo) }}" alt="{{ user.joueur.pseudo }}">
+                        </div>
+                        <div class="col s12 lesVotes">
+                            <h3 class="center">LES <span class="titleRed" >VOTES</span> :</h3>
+                        </div>
                     </div>
-                    {% endif %}
+                </div>
+            {% endif %}
+            <div>
+                {% set voixJoueur = 0 %}
+                {% for joueur in joueurs %}
+                    {% set voixJoueur = voixJoueur + joueur.voix %}
+                {% endfor %}
+
+                {% for joueur in joueurs %}
+                    <div class="col s3">
+                        <div class="row">
+                            <div class="center">
+                                <p>{{ joueur.pseudo }}</p>
+                            </div>
+                            <div class="center">
+                                <img class="z-depth-5 responsive-img" src="{{ asset('bundles/main/images/' ~ joueur.photo) }}" alt="{{ joueur.pseudo }}">
+                            </div>
+                            <div class="col s5 offset-s1 center ">
+                                <p class="nbVote">Vote : {{ joueur.voix }}  <span class="titleRed"> ({{ (joueur.voix / voixJoueur * 100)|round }}%)</span> </p>
+                            </div>
+                            {% if app.user and user.joueur is null %}
+                                <div class="col s5 center divVote ">
+                                    <a href="{{ path('vote', { 'id' : joueur.id }) }}"> <button class="btn btnVote">Je vote</button></a>
+                                </div>
+                            {% elseif app.user and user.joueur is defined %}
+                                <div class="col s5 center divVote ">
+                                    <button class="tooltipped btn btnVoteDisabled" data-position="bottom" data-delay="50" data-tooltip="Tu as déjà voté pour {{ user.joueur.pseudo }} , tu ne peux plus voter !" >Je vote</button>
+                                </div>
+                            {% else %}
+                                <div class="col s5 center divVote ">
+                                    <button class="tooltipped btn btnVoteDisabled" data-position="bottom" data-delay="50" data-tooltip="Connect toi ou inscrit toi en 1 minute pour voter !" >Je vote</button>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row bracket">
+            <div class="col s12 center">
+                <h2>Bra<span class="titleRed">cket</span> :</h2>
+            </div>
+            <div class="row">
+                <div class="col s2 offset-s1 bracketBox">
+                    <p class="center">Player 1</p>
                 </div>
             </div>
-            {% endfor %}
+            <div class="row">
+                <div class="col s2 offset-s1 bracketBox">
+                    <p class="center">Player 2</p>
+                </div>
+                <div class="col s2 offset-s1 bracketBoxDemi">
+                    <p class="center">Demi 1</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s2 offset-s7 bracketBox">
+                    <p class="center">Finaliste</p>
+                </div>
+                <div class="col s1 center">
+                    <p>VS</p>
+                </div>
+                <div class="col s2 bracketBox">
+                    <p class="center">Oliech</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s2 offset-s1 bracketBox">
+                    <p class="center">Player 3</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s2 offset-s1 bracketBox">
+                    <p class="center">Player 4</p>
+                </div>
+                <div class="col s2 offset-s1 bracketBoxDemi">
+                    <p class="center">Demi 2</p>
+                </div>
+            </div>
+        </div>
+        <div class="row footer">
+            <p class="center">© Hushy pour ArmaTeam </p>
         </div>
     </div>
-    <div class="row bracket">
-        <div class="col s12 center">
-            <h2>Bra<span class="titleRed">cket</span> :</h2>
-        </div>
-        <div class="row">
-            <div class="col s2 offset-s1 bracketBox">
-                <p class="center">Player 1</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s2 offset-s1 bracketBox">
-                <p class="center">Player 2</p>
-            </div>
-            <div class="col s2 offset-s1 bracketBoxDemi">
-                <p class="center">Demi 1</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s2 offset-s7 bracketBox">
-                <p class="center">Finaliste</p>
-            </div>
-            <div class="col s1 center">
-                <p>VS</p>
-            </div>
-            <div class="col s2 bracketBox">
-                <p class="center">Oliech</p>
-            </div>
-        </div>
-       <div class="row">
-               <div class="col s2 offset-s1 bracketBox">
-                   <p class="center">Player 3</p>
-               </div>
-       </div>
-        <div class="row">
-            <div class="col s2 offset-s1 bracketBox">
-                <p class="center">Player 4</p>
-            </div>
-            <div class="col s2 offset-s1 bracketBoxDemi">
-                <p class="center">Demi 2</p>
-            </div>
-        </div>
-    </div>
-    <div class="row footer">
-        <p class="center">© Hushy pour ArmaTeam </p>
-    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $(document).ready(function()
+        {
+            $('.first').click(function(){
+                $('.first').animate({"top": "-50000px"}, slow),
+                    $('.lebody').fadeIn(2000),
+                    $('body').css('position', 'relative')
+            })
+        });
+    </script>
+
 {% endblock %}

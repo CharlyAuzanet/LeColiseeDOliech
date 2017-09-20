@@ -25,6 +25,7 @@ class DefaultController extends Controller
 
     public function voteAction($id)
     {
+
         //Conexxion BDD
         $em = $this->getDoctrine()->getManager();
         // On récupère l'utilisateur connécté
@@ -33,16 +34,26 @@ class DefaultController extends Controller
         //On récupère l'objet du joueur
         $joueurs = $em->getRepository('MainBundle:Joueurs')->findOneById($id);
 
-        //On le set
-        $User->setJoueur($joueurs);
-        $joueurs->setVoix($joueurs->getVoix() + 1);
+        if ( $User->getJoueur() == null ) {
+            //On le set
+            $User->setJoueur($joueurs);
+            $joueurs->setVoix($joueurs->getVoix() + 1);
 
-        $em->persist($User, $joueurs);
-        $em->flush();
+            $em->persist($User, $joueurs);
+            $em->flush();
 
-        return $this->render('@Main/Default/redirect.html.twig', array(
-            'joueur' => $joueurs
-        ));
+
+            return $this->render('@Main/Default/redirect.html.twig', array(
+                'joueur' => $joueurs
+            ));
+
+        }
+
+        else {
+            return $this->render('@Main/Default/redirectError.html.twig', array(
+                'user' => $User
+            ));
+        }
     }
 
 }

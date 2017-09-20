@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <meta http-equiv="refresh" content="3; URL={{ path('main_homepage') }}">
+    <div id="confirmVoter">
+        <div class="row">
+            <div class="col s4 offset-s4">
+                <div class="row">
+                    <div class="col s6 offset-s3 center">
+                        <img src="{{ asset('bundles/main/images/armaLogo.png') }}" alt="armaLogo" class="center responsive-img">
+                    </div>
+                    <div class="col s12 center">
+                        <p style="font-size: 2em">Vous avez déjà voté pour <span class="titleRed">{{ user.joueur.pseudo }}</span> ! Retour à l'accueil...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
