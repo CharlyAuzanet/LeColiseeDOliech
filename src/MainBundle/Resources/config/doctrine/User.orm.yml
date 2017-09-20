@@ -13,4 +13,5 @@ MainBundle\Entity\User:
     manyToOne:
         joueur:
           targetEntity: MainBundle\Entity\Joueurs
+          inversedBy: users
           cascade: ['all']

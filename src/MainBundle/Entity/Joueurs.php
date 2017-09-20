@@ -7,8 +7,9 @@ namespace MainBundle\Entity;
  */
 class Joueurs
 {
+
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -18,15 +19,32 @@ class Joueurs
     private $pseudo;
 
     /**
-     * @var int
+     * @var integer
      */
     private $voix;
 
+    /**
+     * @var string
+     */
+    private $photo;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $users;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -74,17 +92,12 @@ class Joueurs
     /**
      * Get voix
      *
-     * @return int
+     * @return integer
      */
     public function getVoix()
     {
         return $this->voix;
     }
-    /**
-     * @var string
-     */
-    private $photo;
-
 
     /**
      * Set photo
@@ -108,5 +121,39 @@ class Joueurs
     public function getPhoto()
     {
         return $this->photo;
+    }
+
+    /**
+     * Add user
+     *
+     * @param \MainBundle\Entity\User $user
+     *
+     * @return Joueurs
+     */
+    public function addUser(\MainBundle\Entity\User $user)
+    {
+        $this->users[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \MainBundle\Entity\User $user
+     */
+    public function removeUser(\MainBundle\Entity\User $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }

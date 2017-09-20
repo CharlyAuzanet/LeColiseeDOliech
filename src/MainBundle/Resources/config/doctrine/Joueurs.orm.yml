@@ -21,3 +21,8 @@ MainBundle\Entity\Joueurs:
             length: 255
             column: Photo
     lifecycleCallbacks: {  }
+
+    oneToMany:
+        users:
+            targetEntity: MainBundle\Entity\User
+            mappedBy: joueur
