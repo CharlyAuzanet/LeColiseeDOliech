@@ -5,6 +5,7 @@ body {
   margin: 0 auto;
   padding: 0 auto;
   width: 100%;
+  position: fixed;
 }
 
 .title {
@@ -29,6 +30,7 @@ body {
 }
 .header {
   border-bottom: solid black 3px;
+  position: relative;
 }
 .btnVote {
   margin-top: 15px;
@@ -88,4 +90,32 @@ body {
     color: white;
     padding-top: 8px;
   }
+}
+#firstBack {
+  position:fixed;
+  left:0%;
+  top:0%;
+  width:100%;
+  z-index:1;
+  background-repeat: no-repeat;
+
+}
+#logoArmaFirst {
+  position:fixed;
+  left:0%;
+  top:0%;
+  width:20%;
+  margin-left: 40%;
+  z-index:2;
+}
+.preloader {
+  z-index:2;
+}
+#emma {
+  position: absolute;
+  bottom:0;
+  right:0;
+}
+.indeterminate {
+  background-color: ($redArma !important);
 }

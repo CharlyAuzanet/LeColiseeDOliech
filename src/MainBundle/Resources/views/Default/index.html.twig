@@ -1,14 +1,19 @@
 {% extends 'base.html.twig' %}
 
 
-{% block first %}
-    <img class="first" src="https://wallpaperscraft.com/image/hearthstone_heroes_of_warcraft_box_sword_smoke_pattern_95366_1920x1080.jpg" alt="azd">
-
-{% endblock %}
 {% block body %}
-    <div class="lebody">
 
-        <div class="row header">
+
+    <div id="firstBack" class="row">
+        <div class="progress white preloader">
+            <div class="indeterminate"></div>
+        </div>
+        <img id="logoArmaFirst" class="responsive-img" src="{{ asset('bundles/main/images/armaLogo.png') }}" alt="logoArma">
+        <img   class="responsive-img" src="{{ asset('bundles/main/images/wpwhite.jpg') }}" alt="colisée">
+
+    </div>
+
+    <div class="row header">
             <div class="col s2"><img class="responsive-img" src="{{ asset('bundles/main/images/armaLogo.png') }}" alt="ArmaLogo"></div>
             <div class="col s8 title">
                 <h1>LE <span class="titleRed">COLISÉE</span> D'<span class="titleRed">OLIECH</span></h1>
@@ -26,7 +31,8 @@
                     </a>
                 </div>
             {% endif %}
-        </div>
+        <img id="emma" src="{{ asset('bundles/main/images/emma.0') }}" alt="emma">
+    </div>
         <div class="row voteBox">
             {% if app.user is empty or user.joueur is null %}
                 <div class="col s12">
@@ -128,7 +134,6 @@
         <div class="row footer">
             <p class="center">© Hushy pour ArmaTeam </p>
         </div>
-    </div>
 
 {% endblock %}
 
@@ -138,11 +143,18 @@
     <script>
         $(document).ready(function()
         {
-            $('.first').click(function(){
-                $('.first').animate({"top": "-50000px"}, slow),
-                    $('.lebody').fadeIn(2000),
-                    $('body').css('position', 'relative')
-            })
+
+            $('#firstBack').click(function(){
+                $('.preloader').css('display', 'none'),
+                $('#firstBack').fadeOut(2000),
+                $('body').css('position', 'relative')
+            });
+            setTimeout(function () {
+         $('#firstBack').trigger('click');
+         }, 2000);
+
+
+
         });
     </script>
 
