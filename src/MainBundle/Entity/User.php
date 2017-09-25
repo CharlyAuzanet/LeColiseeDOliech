@@ -38,4 +38,33 @@ class User extends BaseUSer
     {
         return $this->joueur;
     }
+    /**
+     * @var \MainBundle\Entity\VoteOliech
+     */
+    private $voteoliech;
+
+
+    /**
+     * Set voteoliech
+     *
+     * @param \MainBundle\Entity\VoteOliech $voteoliech
+     *
+     * @return User
+     */
+    public function setVoteoliech(\MainBundle\Entity\VoteOliech $voteoliech = null)
+    {
+        $this->voteoliech = $voteoliech;
+
+        return $this;
+    }
+
+    /**
+     * Get voteoliech
+     *
+     * @return \MainBundle\Entity\VoteOliech
+     */
+    public function getVoteoliech()
+    {
+        return $this->voteoliech;
+    }
 }

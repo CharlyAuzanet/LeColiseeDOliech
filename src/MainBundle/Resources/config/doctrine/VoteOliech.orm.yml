@@ -1,0 +1,17 @@
+MainBundle\Entity\VoteOliech:
+    type: entity
+    table: null
+    repositoryClass: MainBundle\Repository\VoteOliechRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        booleen:
+            type: string
+            length: 255
+        nb:
+            type: integer
+    lifecycleCallbacks: {  }

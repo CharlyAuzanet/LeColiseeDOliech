@@ -15,3 +15,7 @@ MainBundle\Entity\User:
           targetEntity: MainBundle\Entity\Joueurs
           inversedBy: users
           cascade: ['all']
+
+        voteoliech:
+          targetEntity: MainBundle\Entity\VoteOliech
+          cascade: ['all']

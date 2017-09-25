@@ -88,6 +88,49 @@
                     </div>
                 {% endfor %}
             </div>
+            <div class="row oliechBox">
+                <div class="col s6 offset-s3 center">
+                    <div class="row">
+                        <div class="col s12 center">
+                            <h3><span class="titleRed">Oliech</span> gagnerat-il en <span class="titleRed">final</span> ?</h3>
+                        </div>
+                        <div class="col s8 offset-s2 center">
+                            <img class="responsive-img" src="http://static.mnium.org/images/contenu/actus/HearthStone/hearthstone_oliech_rejoint_M.jpg" alt="oliech">
+                        </div>
+                        {% if app.user and user.voteOliech is null %}
+                            {% for voix in voix %}
+                            <div class="col s6">
+                                <a href="{{ path('oliech_vote', { 'id' : voix.id }) }}"><button class="btn btnVote ouiBtn">{{ voix.booleen }}</button></a>
+                            </div>
+                            {% endfor %}
+                        {% elseif app.user and user.voteOliech is defined %}
+                            <div class="col s3 offset-s3">
+                                <button class="tooltipped btn btnVoteDisabled" data-position="bottom" data-delay="50" data-tooltip="Tu as déjà voté, tu ne peux plus voter !">Oui</button>
+                            </div>
+                            <div class="col s3">
+                                <button class="tooltipped btn btnVoteDisabled" data-position="bottom" data-delay="50" data-tooltip="Tu as déjà voté, tu ne peux plus voter !">Non</button>
+                            </div>
+                        {% else %}
+                            <div class="col s3 offset-s3">
+                                <button class="tooltipped btn btnVoteDisabled" data-position="bottom" data-delay="50" data-tooltip="Connect toi ou inscrit toi en 1 minute pour voter !">Oui</button>
+                            </div>
+                            <div class="col s3">
+                                <button class="tooltipped btn btnVoteDisabled" data-position="bottom" data-delay="50" data-tooltip="Connect toi ou inscrit toi en 1 minute pour voter !">Non</button>
+                            </div>
+                        {% endif %}
+                        {% set VoteTotal = 0 %}
+                        {% for voix in voix %}
+                            {% set VoteTotal = VoteTotal + voix.nb %}
+                        {% endfor %}
+                        {% for voix in voix %}
+                            <div class="col s6">
+                                <p>{{ voix.nb }}<span class="titleRed" > ({{ (voix.Nb / VoteTotal * 100)|round }}%)</span></p>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row bracket">
             <div class="col s12 center">
@@ -134,11 +177,11 @@
         <div class="row footer">
             <p class="center">© Hushy pour ArmaTeam </p>
         </div>
-
-{% endblock %}
+    {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
+
 
     <script>
         $(document).ready(function()
@@ -152,9 +195,6 @@
             setTimeout(function () {
          $('#firstBack').trigger('click');
          }, 3000);
-
-
-
         });
     </script>
 

@@ -6,3 +6,7 @@ main_homepage:
 vote:
     path:     /redirect/{id}
     defaults: { _controller: MainBundle:Default:vote }
+
+oliech_vote:
+    path:     /redirectVote/{id}
+    defaults: { _controller: MainBundle:Default:oliech}

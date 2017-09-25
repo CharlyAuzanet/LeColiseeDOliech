@@ -14,12 +14,15 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $joueurs = $em->getRepository('MainBundle:Joueurs')->findAll();
+        $voix = $em->getRepository('MainBundle:VoteOliech')->findAll();
+
         $user = $this->getUser();
 
 
         return $this->render('MainBundle:Default:index.html.twig', array(
             'joueurs'=>$joueurs,
-            'user'=>$user
+            'user'=>$user,
+            'voix'=>$voix
         ));
     }
 
@@ -54,6 +57,36 @@ class DefaultController extends Controller
                 'user' => $User
             ));
         }
+    }
+
+    public function oliechAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $User = $this->getUser();
+
+        $voix = $em->getRepository('MainBundle:VoteOliech')->findOneById($id);
+
+        if ($User->getVoteOliech() == null ) {
+
+            $User->setVoteOliech($voix);
+            $voix->setNb($voix->getNb() + 1);
+
+            $em->persist($User, $voix);
+            $em->flush();
+
+            return $this->render('@Main/Default/redirectVote.html.twig', array(
+                'voix' => $voix
+            ));
+        }
+
+        else {
+            return $this->render('@Main/Default/redirectError.html.twig', array(
+                'user' => $User
+            ));
+        }
+
+
     }
 
 }
