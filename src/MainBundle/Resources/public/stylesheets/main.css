@@ -212,6 +212,18 @@ body {
 }
 
 /* line 119, ../sass/_index.scss */
+#colisee {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+/* line 124, ../sass/_index.scss */
 .indeterminate {
   background-color: #881814 !important;
+}
+
+/* line 127, ../sass/_index.scss */
+.test {
+  margin-top: 150px;
 }

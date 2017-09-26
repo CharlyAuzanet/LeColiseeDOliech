@@ -116,6 +116,14 @@ body {
   bottom:0;
   right:0;
 }
+#colisee {
+  position: absolute;
+  bottom:0;
+  left:0;
+}
 .indeterminate {
   background-color: ($redArma !important);
+}
+.test {
+  margin-top: 150px;
 }
